@@ -1,17 +1,25 @@
 import React, { useState, useEffect} from "react";
 import logo from './logo.svg';
 import './App.css';
+import axios from "axios";
 
 function App() {
 
   const [message, setMessage] = useState("");
 
   useEffect(()=>{
-    fetch('/api/hello')
-        .then(response => response.text())
-        .then(message => {
+    axios.get("/api/hello",null)
+        .then((response)=> response.data)
+        .then((message)=> {
           setMessage(message);
+          console.log(message);
         })
+        .catch((error)=>console.log(error));
+    // fetch('/api/hello')
+    //     .then(response => response.text())
+    //     .then(message => {
+    //       setMessage(message);
+    //     })
   },[])
 
   return (
