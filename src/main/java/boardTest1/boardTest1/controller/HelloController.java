@@ -12,8 +12,4 @@ public class HelloController {
     public String hello(){
         return "시간  " + new Date() + "\r\n";
     }
-    @GetMapping("/list/hello")
-    public String list(){
-        return "시간  " + new Date() + "\r\n";
-    }
 }
