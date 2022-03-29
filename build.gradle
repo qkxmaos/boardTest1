@@ -14,15 +14,17 @@ repositories {
 
 dependencies {
 	//implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-web:2.6.5'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc:2.6.5'
+	implementation 'mysql:mysql-connector-java:8.0.28'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.5'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
-
-def webappDir = "$projectDir/src/main/reactfront"
+//왜인지 모름 intelij가 as object 추가하래서 추가함
+def webappDir = "$projectDir/src/main/reactfront" as Object
 
 sourceSets {
 	main {
