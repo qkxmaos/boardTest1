@@ -12,8 +12,4 @@ public class HelloController {
     public String hello(){
         return "시간  " + new Date() + "\r\n";
     }
-    @GetMapping("/api/hello1")
-    public String hello1(){
-        return "시간  " + new Date() + "\r\n";
-    }
 }
