@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function App() {
   const [message, setMessage] = useState("");
@@ -38,6 +39,10 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <Link to="/home">
+        <button>to home </button>
+      </Link>
     </div>
   );
 }
