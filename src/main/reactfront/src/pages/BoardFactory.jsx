@@ -1,9 +1,12 @@
+import axios from "axios";
 import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const BoardFactory = () => {
   const [titleText, setTitleText] = useState("");
   const [contentText, setContentText] = useState("");
+  const navigate = useNavigate();
 
   const onTitleChange = (e) => {
     setTitleText(e.target.value);
@@ -13,11 +16,24 @@ const BoardFactory = () => {
     setContentText(e.target.value);
   };
 
+  const postContent = async () => {
+    const res = axios.post("/board/new", {
+      title: titleText,
+      content: contentText,
+    });
+    if (res.data) {
+      alert("글 등록이 완료되었습니다.");
+      navigate("/");
+    }
+  };
+
   const onSubmit = (e) => {
     if (titleText !== "" && contentText !== "") {
       e.preventDefault();
+      postContent();
       setTitleText("");
       setContentText("");
+      navigate("/");
     }
   };
 
@@ -51,6 +67,7 @@ const BoardFactory = () => {
             onChange={onContentChange}
             placeholder="내용"
           />
+          <input type="submit" />
         </form>
       </Wrapper>
     </Container>

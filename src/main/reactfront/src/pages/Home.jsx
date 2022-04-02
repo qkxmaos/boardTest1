@@ -1,8 +1,28 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, NavLink, Route } from "react-router-dom";
 import styled from "styled-components";
 
 const Home = () => {
+  const [list, setList] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(true);
+
+  const getList = () => {
+    axios
+      .get("/board", null)
+      .then((response) => response.data)
+      .then((list) => setList(list))
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    getList();
+  }, []);
+
+  const onWriteClick = async () => {
+    const res = await axios.get("/board/new", null);
+    //boolean
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -59,7 +79,7 @@ const Home = () => {
         </table>
 
         <Link to="/write">
-          <button>글 쓰기</button>
+          <button onClick={onWriteClick}>글 쓰기</button>
         </Link>
       </Wrapper>
     </Container>
