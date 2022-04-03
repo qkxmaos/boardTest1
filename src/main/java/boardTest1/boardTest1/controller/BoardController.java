@@ -14,8 +14,8 @@ public class BoardController {
     private BoardService boardService;
 
     @GetMapping("/board/new")
-    public boolean boardWriteForm(){
-        return true;
+    public String boardWriteForm(){
+        return "true";
     }
 
     @PostMapping("/board/new")
