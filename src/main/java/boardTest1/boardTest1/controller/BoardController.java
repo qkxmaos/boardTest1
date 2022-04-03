@@ -26,10 +26,8 @@ public class BoardController {
     }
 
     @GetMapping("/board")
-    public Model boardList(Model model){
-
-        model.addAttribute("list", boardService.boardList());
-
-        return model;
+    public String  boardList(){
+        System.out.println("board");
+        return "board";
     }
 }
