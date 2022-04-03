@@ -3,7 +3,6 @@ package boardTest1.boardTest1.controller;
 import boardTest1.boardTest1.entity.Board;
 import boardTest1.boardTest1.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,8 +30,11 @@ public class BoardController {
     }
 
     @GetMapping("/board")
-    public String  boardList(){
+    public Model boardList(Model model){
         System.out.println("Get:/board");
-        return "board";
+
+        return model.addAttribute("list", boardService.boardList());
+
+
     }
 }
