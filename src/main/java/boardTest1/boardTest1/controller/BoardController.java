@@ -26,7 +26,6 @@ public class BoardController {
         System.out.println(board.getTitle());
         System.out.println(board.getContent());
         boardService.write(board);
-        System.out.println(board);
 
         return "/board/new";
     }

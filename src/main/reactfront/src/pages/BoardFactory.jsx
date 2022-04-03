@@ -17,10 +17,10 @@ const BoardFactory = () => {
   };
 
   const postContent = async () => {
-    const res = axios.post("/board/new", {
-      title: titleText,
-      content: contentText,
-    });
+    const res = axios.post("/board/new",null, {params:{
+        title: titleText,
+        content: contentText,
+      }});
     if (res.data) {
       alert("글 등록이 완료되었습니다.");
       navigate("/");
@@ -31,9 +31,6 @@ const BoardFactory = () => {
     if (titleText !== "" && contentText !== "") {
       e.preventDefault();
       postContent();
-      setTitleText("");
-      setContentText("");
-      navigate("/");
     }
   };
 
