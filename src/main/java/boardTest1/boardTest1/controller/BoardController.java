@@ -20,8 +20,6 @@ public class BoardController {
 
     @PostMapping("/board/new")
     public String boardWritePro(Board board){
-        board.setTitle("제목");
-        board.setContent("내용");
         boardService.write(board);
 
         return "";
