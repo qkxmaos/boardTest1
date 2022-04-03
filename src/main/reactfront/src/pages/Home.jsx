@@ -1,17 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, Route } from "react-router-dom";
+import {Link, NavLink, Route, useNavigate} from "react-router-dom";
 import styled from "styled-components";
 
 const Home = () => {
   const [list, setList] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(true);
+  const navigate = useNavigate()
 
   const getList = () => {
     axios
       .get("/board", null)
       .then((response) => response.data)
-      .then((list) => setList(list))
+      .then((list) => {
+        setList(list);
+      })
       .catch((err) => console.log(err));
   };
   useEffect(() => {
@@ -20,7 +22,9 @@ const Home = () => {
 
   const onWriteClick = async () => {
     const res = await axios.get("/board/new", null);
-    //boolean
+    if(res.data){
+      navigate('/write')
+    }
   };
 
   return (
@@ -78,9 +82,7 @@ const Home = () => {
           </tbody>
         </table>
 
-        <Link to="/write">
           <button onClick={onWriteClick}>글 쓰기</button>
-        </Link>
       </Wrapper>
     </Container>
   );
