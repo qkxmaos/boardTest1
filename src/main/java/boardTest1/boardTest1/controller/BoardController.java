@@ -21,7 +21,10 @@ public class BoardController {
 
     @PostMapping("/board/new")
     public String boardWritePro(Board board){
+        System.out.println(board.getTitle());
+        System.out.println(board.getContent());
         boardService.write(board);
+        System.out.println(board);
 
         return "/board/new";
     }
