@@ -16,11 +16,13 @@ public class BoardController {
 
     @GetMapping("/board/new")
     public boolean boardWriteForm(){
+        System.out.println("Get:/board/new");
         return true;
     }
 
     @PostMapping("/board/new")
     public String boardWritePro(Board board){
+        System.out.println("Post:/board/new");
         System.out.println(board.getTitle());
         System.out.println(board.getContent());
         boardService.write(board);
@@ -31,7 +33,7 @@ public class BoardController {
 
     @GetMapping("/board")
     public String  boardList(){
-        System.out.println("board");
+        System.out.println("Get:/board");
         return "board";
     }
 }
