@@ -27,6 +27,21 @@ const Home = () => {
     }
   };
 
+  const dummy = [{
+    id: 2,
+    title: "title2",
+    writer: "writer2"
+  },
+    {
+      id: 3,
+      title: "title3",
+      writer: "writer3"
+    }, {
+      id: 4,
+      title: "title4",
+      writer: "writer4"
+    }]
+
   return (
     <Container>
       <Wrapper>
@@ -39,17 +54,18 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {list.map((list) => {
-              <>
-                <tr key={list.id}>
-                  <td>{list.id}</td>
-                  <Link to={"/detail/" + list.id}>
-                    <td>{list.title}</td>
-                  </Link>
-                  <td>{list.writer}</td>
-                </tr>
-              </>;
-            })} */}
+            {dummy.map((list) => {
+              return(              <>
+                        <tr key={list.id}>
+                          <td>{list.id}</td>
+
+                            <td><Link to={"/detail/" + list.id}>{list.title}</Link></td>
+
+                          <td>{list.writer}</td>
+                        </tr>
+                      </>
+                  )
+            })}
             <tr>
               <td>1</td>
               <td>
