@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import {Link, NavLink, Route, useNavigate} from "react-router-dom";
+import { Link, NavLink, Route, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Home = () => {
   const [list, setList] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const getList = () => {
     axios
@@ -22,25 +22,28 @@ const Home = () => {
 
   const onWriteClick = async () => {
     const res = await axios.get("/board/new", null);
-    if(res.data){
-      navigate('/write')
+    if (res.data) {
+      navigate("/write");
     }
   };
 
-  const dummy = [{
-    id: 2,
-    title: "title2",
-    writer: "writer2"
-  },
+  const dummy = [
+    {
+      id: 2,
+      title: "title2",
+      writer: "writer2",
+    },
     {
       id: 3,
       title: "title3",
-      writer: "writer3"
-    }, {
+      writer: "writer3",
+    },
+    {
       id: 4,
       title: "title4",
-      writer: "writer4"
-    }]
+      writer: "writer4",
+    },
+  ];
 
   return (
     <Container>
@@ -55,16 +58,17 @@ const Home = () => {
           </thead>
           <tbody>
             {dummy.map((list) => {
-              return(              <>
-                        <tr key={list.id}>
-                          <td>{list.id}</td>
-
-                            <td><Link to={"/detail/" + list.id}>{list.title}</Link></td>
-
-                          <td>{list.writer}</td>
-                        </tr>
-                      </>
-                  )
+              return (
+                <>
+                  <tr key={list.id}>
+                    <td>{list.id}</td>
+                    <td>
+                      <Link to={"/detail/" + list.id}>{list.title}</Link>
+                    </td>
+                    <td>{list.writer}</td>
+                  </tr>
+                </>
+              );
             })}
             <tr>
               <td>1</td>
@@ -98,7 +102,7 @@ const Home = () => {
           </tbody>
         </table>
 
-          <button onClick={onWriteClick}>글 쓰기</button>
+        <button onClick={onWriteClick}>글 쓰기</button>
       </Wrapper>
     </Container>
   );
