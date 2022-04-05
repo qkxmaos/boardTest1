@@ -57,6 +57,7 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
+<<<<<<< Updated upstream
             {dummy.map((list) => {
               return (
                 <>
@@ -70,6 +71,8 @@ const Home = () => {
                 </>
               );
             })}
+=======
+>>>>>>> Stashed changes
             <tr>
               <td>1</td>
               <td>
@@ -99,6 +102,18 @@ const Home = () => {
               <td>title2</td>
               <td>재현</td>
             </tr>
+
+            {/* {list.map((list) => {
+              <>
+                <tr key={list.id}>
+                  <td>{list.id}</td>
+                  <Link to={"/detail/" + list.id}>
+                    <td>{list.title}</td>
+                  </Link>
+                  <td>{list.writer}</td>
+                </tr>
+              </>;
+            })} */}
           </tbody>
         </table>
 
