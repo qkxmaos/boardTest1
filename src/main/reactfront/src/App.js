@@ -16,15 +16,11 @@ function App() {
         console.log(message);
       })
       .catch((error) => console.log(error));
-    // fetch('/api/hello')
-    //     .then(response => response.text())
-    //     .then(message => {
-    //       setMessage(message);
-    //     })
   }, []);
 
   return (
     <div className="App">
+      <h1>{message}</h1>
     </div>
   );
 }

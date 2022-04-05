@@ -10,7 +10,7 @@ const Home = () => {
   const getList = () => {
     axios
       .get("/board", null)
-      .then((response) => response.data)
+      .then((response) => response.json())
       .then((list) => {
         setList(list);
       })
@@ -103,6 +103,9 @@ const Home = () => {
         </table>
 
         <button onClick={onWriteClick}>글 쓰기</button>
+        <button>
+          <Link to="/app">app.js로 가기</Link>
+        </button>
       </Wrapper>
     </Container>
   );
