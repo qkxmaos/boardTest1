@@ -10,7 +10,7 @@ const Home = () => {
   const getList = () => {
     axios
       .get("/board", null)
-      .then((response) => response.json())
+      .then((response) => response.data)
       .then((list) => {
         setList(list);
       })
@@ -57,7 +57,7 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
-            {dummy.map((list) => {
+            {list.map((list) => {
               return (
                 <>
                   <tr key={list.id}>
