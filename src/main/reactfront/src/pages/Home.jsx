@@ -27,24 +27,6 @@ const Home = () => {
     }
   };
 
-  const dummy = [
-    {
-      id: 2,
-      title: "title2",
-      writer: "writer2",
-    },
-    {
-      id: 3,
-      title: "title3",
-      writer: "writer3",
-    },
-    {
-      id: 4,
-      title: "title4",
-      writer: "writer4",
-    },
-  ];
-
   return (
     <Container>
       <Wrapper>

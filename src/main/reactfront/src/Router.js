@@ -4,6 +4,7 @@ import App from "./App";
 import BoardFactory from "./pages/BoardFactory";
 import Detail from "./pages/Detail";
 import Home from "./pages/Home";
+import ModifyDetail from "./pages/ModifyDetail";
 
 const AppRouter = () => {
   return (
@@ -13,6 +14,7 @@ const AppRouter = () => {
         <Route path="/app" element={<App />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/write" element={<BoardFactory />} />
+        <Route path="/modify" element={<ModifyDetail />} />
       </Routes>
     </BrowserRouter>
   );

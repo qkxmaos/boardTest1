@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const Detail = () => {
@@ -13,7 +13,7 @@ const Detail = () => {
 
   const getDetailWriting = async () => {
     const res = await axios.get(`/board/${param.id}`);
-    setDetailWriting(res);
+    setDetailWriting(res.data[0]);
   };
   useEffect(getDetailWriting, []);
 
@@ -21,6 +21,9 @@ const Detail = () => {
     <Wrapper>
       <h1>{detailWriting.title}</h1>
       <p>{detailWriting.content}</p>
+      <button>
+        <Link to="/modify">수정</Link>
+      </button>
     </Wrapper>
   );
 };

@@ -3,16 +3,21 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
-const BoardFactory = () => {
+const ModifyDetail = () => {
   const [titleText, setTitleText] = useState("");
   const [contentText, setContentText] = useState("");
-  // const [detailWriting, setDetailWriting] = useState({
-  //   title: "제목",
-  //   content: "내용",
-  // });
-  // const param = useParams();
-
   const navigate = useNavigate();
+  const { id } = useParams();
+
+  const getDetailContent = async () => {
+    const res = [{ title: "제목1", content: "내용1" }];
+    // const res = await (await axios.get(`/board/${id}`)).data();
+    setTitleText(res[0].title);
+    setContentText(res[0].content);
+  };
+  useEffect(() => {
+    getDetailContent();
+  }, []);
 
   const onChange = (e) => {
     if (e.target.name === "title") {
@@ -23,16 +28,16 @@ const BoardFactory = () => {
   };
 
   const postContent = async () => {
-    const res = axios.post("/board/new", null, {
-      params: {
-        title: titleText,
-        content: contentText,
-      },
-    });
-    if (res.data) {
-      alert("글 등록이 완료되었습니다.");
-      navigate("/");
-    }
+    // const res = axios.post("/board/modify", null, {
+    //   params: {
+    //     title: titleText,
+    //     content: contentText,
+    //   },
+    // });
+    // if (res.data) {
+    //   alert("글 등록이 완료되었습니다.");
+    //   navigate(`/detail/${id}`);
+    // }
   };
 
   const onSubmit = (e) => {
@@ -53,13 +58,6 @@ const BoardFactory = () => {
     },
     [onSubmit]
   );
-
-  // const getDetailWriting = async () => {
-  //   const res = await axios.get(`/board/${param.id}`);
-  //   setDetailWriting(res.data[0]);
-  // };
-  // useEffect(getDetailWriting, []);
-
   return (
     <Container>
       <Wrapper>
@@ -87,7 +85,7 @@ const BoardFactory = () => {
   );
 };
 
-export default BoardFactory;
+export default ModifyDetail;
 
 const Container = styled.div`
   height: 100vh;
