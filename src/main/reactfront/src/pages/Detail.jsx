@@ -5,8 +5,6 @@ import styled from "styled-components";
 
 const Detail = () => {
   const [detailWriting, setDetailWriting] = useState({
-    title: "제목",
-    content: "내용",
   });
   const { id } = useParams();
 
@@ -19,11 +17,7 @@ const Detail = () => {
   }, []);
 
   const onDelete = async () => {
-    const res = await axios.post(`/board/delete/${id}`, null, {
-      params: {
-        title: detailWriting.title,
-        content: detailWriting.content,
-      },
+    const res = await axios.post(`/board/delete?id=${id}`, null, {
     });
     console.log(res);
   };

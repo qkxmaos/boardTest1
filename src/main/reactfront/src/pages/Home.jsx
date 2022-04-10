@@ -35,7 +35,6 @@ const Home = () => {
             <tr>
               <th>글 번호</th>
               <th>제목</th>
-              <th>작성자</th>
             </tr>
           </thead>
           <tbody>
@@ -47,7 +46,6 @@ const Home = () => {
                     <td>
                       <Link to={"/detail/" + list.id}>{list.title}</Link>
                     </td>
-                    <td>{list.writer}</td>
                   </tr>
                 </>
               );
