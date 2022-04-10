@@ -52,42 +52,10 @@ const Home = () => {
                 </>
               );
             })}
-            <tr>
-              <td>1</td>
-              <td>
-                <NavLink
-                  style={{
-                    color: "black",
-                  }}
-                  to="/detail/1"
-                >
-                  title1
-                </NavLink>
-              </td>
-              <td>인서</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>title2</td>
-              <td>재현</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>title1</td>
-              <td>인서</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>title2</td>
-              <td>재현</td>
-            </tr>
           </tbody>
         </table>
 
         <button onClick={onWriteClick}>글 쓰기</button>
-        <button>
-          <Link to="/app">app.js로 가기</Link>
-        </button>
       </Wrapper>
     </Container>
   );
