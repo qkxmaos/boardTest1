@@ -10,10 +10,9 @@ const ModifyDetail = () => {
   const { id } = useParams();
 
   const getDetailContent = async () => {
-    const res = [{ title: "제목1", content: "내용1" }];
-    // const res = await (await axios.get(`/board/${id}`)).data();
-    setTitleText(res[0].title);
-    setContentText(res[0].content);
+    const res = await await axios.get(`/board/modify/${id}`);
+    setTitleText(res.data.title);
+    setContentText(res.data.content);
   };
   useEffect(() => {
     getDetailContent();
@@ -28,16 +27,17 @@ const ModifyDetail = () => {
   };
 
   const postContent = async () => {
-    // const res = axios.post("/board/modify", null, {
-    //   params: {
-    //     title: titleText,
-    //     content: contentText,
-    //   },
-    // });
-    // if (res.data) {
-    //   alert("글 등록이 완료되었습니다.");
-    //   navigate(`/detail/${id}`);
-    // }
+    const res = await axios.post(`/board/modify/${id}`, null, {
+      params: {
+        title: titleText,
+        content: contentText,
+      },
+    });
+    console.log(res);
+    if (res.data) {
+      alert("글 등록이 완료되었습니다.");
+      navigate(`/detail/${id}`);
+    }
   };
 
   const onSubmit = (e) => {

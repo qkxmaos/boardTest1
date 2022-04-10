@@ -14,7 +14,7 @@ const AppRouter = () => {
         <Route path="/app" element={<App />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/write" element={<BoardFactory />} />
-        <Route path="/modify" element={<ModifyDetail />} />
+        <Route path="/modify/:id" element={<ModifyDetail />} />
       </Routes>
     </BrowserRouter>
   );

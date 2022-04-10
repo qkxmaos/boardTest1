@@ -8,21 +8,36 @@ const Detail = () => {
     title: "제목",
     content: "내용",
   });
-  const param = useParams();
-  console.log(param.id);
+  const { id } = useParams();
 
   const getDetailWriting = async () => {
-    const res = await axios.get(`/board/${param.id}`);
-    setDetailWriting(res.data[0]);
+    const res = await axios.get(`/board/${id}`);
+    setDetailWriting(res.data);
   };
-  useEffect(getDetailWriting, []);
+  useEffect(() => {
+    getDetailWriting();
+  }, []);
+
+  const onDelete = async () => {
+    const res = await axios.post(`/board/delete/${id}`, null, {
+      params: {
+        title: detailWriting.title,
+        content: detailWriting.content,
+      },
+    });
+    console.log(res);
+  };
 
   return (
     <Wrapper>
       <h1>{detailWriting.title}</h1>
       <p>{detailWriting.content}</p>
       <button>
-        <Link to="/modify">수정</Link>
+        <Link to={`/modify/${id}`}>수정</Link>
+      </button>
+      <button onClick={onDelete}>
+        delete
+        {/* <Link to="/">delete</Link> */}
       </button>
     </Wrapper>
   );
